@@ -1,5 +1,7 @@
 package test
 
+import "fmt"
+
 // 选择
 func SeletSort(arr []int) {
 	for i := 1; i < len(arr); i++ {
@@ -99,4 +101,30 @@ func merge(left, right []int) []int {
 		k++
 	}
 	return res
+}
+func QuickSort(arr []int) {
+	current := arr[0]
+	start := 0
+	end := len(arr) - 1
+	for start < end {
+		// end++
+		for start < len(arr) {
+			if current < arr[start] {
+				break
+			}
+			start++
+		}
+		for end < len(arr) {
+			if current > arr[end] {
+				break
+			}
+			end--
+		}
+		if start < end {
+			arr[start], arr[end] = arr[end], arr[start]
+		}
+		//	arr[end-1] = current
+		fmt.Println(start, end)
+	}
+	arr[end], arr[0] = current, arr[end]
 }
