@@ -139,3 +139,36 @@ func QuickSort(arr []int, low, high int) {
 		QuickSort(arr, pivot+1, high)
 	}
 }
+//二分查找
+func Binary_Search(arr []int, val int) int {
+	start := 0
+	end := len(arr) - 1
+	if val == arr[start] {
+		return start
+	}
+	if val == arr[end] {
+		return end
+	}
+	for start <= end {
+		mid := start + (end-start)/2
+
+		if arr[mid] == val {
+			return mid
+		}
+		if arr[mid] > val {
+			end = mid
+			mid = (start+end)/2 + 1
+		} else {
+			start = mid
+			mid = (start+end)/2 + 1
+		}
+		//mid = (start+end)/2 + 1
+		if start == end-1 {
+			return -1
+		}
+		fmt.Println(mid)
+		fmt.Println(start, end)
+	}
+
+	return -1
+}
