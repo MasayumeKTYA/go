@@ -102,13 +102,15 @@ func merge(left, right []int) []int {
 	}
 	return res
 }
-func QuickSort(arr []int) {
-	current := arr[0]
-	start := 0
-	end := len(arr) - 1
+
+//快速排序分开方法
+func partition(arr []int, left, right int) int {
+	current := arr[left]
+	start := left
+	end := right - 1
 	for start < end {
 		// end++
-		for start < len(arr) {
+		for start < end {
 			if current < arr[start] {
 				break
 			}
@@ -123,8 +125,17 @@ func QuickSort(arr []int) {
 		if start < end {
 			arr[start], arr[end] = arr[end], arr[start]
 		}
-		//	arr[end-1] = current
-		fmt.Println(start, end)
 	}
-	arr[end], arr[0] = current, arr[end]
+	arr[end], arr[left] = current, arr[end]
+	return end
+}
+
+//快速排序
+func QuickSort(arr []int, low, high int) {
+	if low < high {
+		pivot := partition(arr, low, high)
+		fmt.Println(pivot)
+		QuickSort(arr, low, pivot)
+		QuickSort(arr, pivot+1, high)
+	}
 }
