@@ -116,7 +116,7 @@ func partition(arr []int, left, right int) int {
 			}
 			start++
 		}
-		for end < len(arr) {
+		for end < right {
 			if current > arr[end] {
 				break
 			}
